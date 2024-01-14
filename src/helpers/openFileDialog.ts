@@ -1,6 +1,7 @@
 export function openFileDialog(
   accept: string,
   multiple: boolean,
+  directory: boolean,
   callback: (arg: Event) => void,
   initializeWithCustomAttributes?: (arg: HTMLInputElement) => void
 ): void {
@@ -14,6 +15,9 @@ export function openFileDialog(
   document.body.appendChild(inputElement);
   // Set its type to file
   inputElement.type = 'file';
+  if (directory) {
+    inputElement.webkitdirectory = true;
+  }
   // Set accept to the file types you want the user to select.
   // Include both the file extension and the mime type
   // if accept is "*" then dont set the accept attribute

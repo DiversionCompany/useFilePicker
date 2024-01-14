@@ -90,6 +90,7 @@ export type SelectedFilesOrErrors<ContentType, CustomErrors = unknown> = XOR<
 
 type UseFilePickerConfigCommon = {
   multiple?: boolean;
+  directory?: boolean;
   accept?: string | string[];
   validators?: Validator[];
   onFilesRejected?: (data: FileErrors) => void;

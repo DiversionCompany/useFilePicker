@@ -22,14 +22,17 @@ function useFilePicker<
     readFilesContent = true,
     validators = [],
     initializeWithCustomParameters,
+    directory = false,
   } = props;
 
   const [plainFiles, setPlainFiles] = useState<File[]>([]);
   const [filesContent, setFilesContent] = useState<FileContent<ExtractContentTypeFromConfig<ConfigType>>[]>([]);
   const [fileErrors, setFileErrors] = useState<UseFilePickerError<CustomErrors>[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const { onFilesSelected, onFilesSuccessfullySelected, onFilesRejected, onClear } =
-    useValidators<ConfigType, CustomErrors>(props);
+  const { onFilesSelected, onFilesSuccessfullySelected, onFilesRejected, onClear } = useValidators<
+    ConfigType,
+    CustomErrors
+  >(props);
 
   const clear: () => void = useCallback(() => {
     setPlainFiles([]);
@@ -85,6 +88,7 @@ function useFilePicker<
     openFileDialog(
       fileExtensions,
       multiple,
+      directory,
       async evt => {
         clear();
         const inputElement = evt.target as HTMLInputElement;

@@ -37,13 +37,7 @@ const App = () => {
   const { openFilePicker, filesContent, loading, errors, plainFiles, clear } = useFilePicker({
     multiple: true,
     readAs: 'DataURL', // availible formats: "Text" | "BinaryString" | "ArrayBuffer" | "DataURL"
-    accept: ['.png', '.jpeg', '.heic'],
     // readFilesContent: false, // ignores file content,
-    validators: [
-      new FileAmountLimitValidator({ min: 1, max: 3 }),
-      // new FileSizeValidator({ maxFileSize: 100_000 /* 100kb in bytes */ }),
-      new ImageDimensionsValidator({ maxHeight: 600 }),
-    ],
     onFilesSelected: ({ plainFiles, filesContent, errors }) => {
       // this callback is always called, even if there are errors
       console.log('onFilesSelected', plainFiles, filesContent, errors);

@@ -83,12 +83,12 @@ function useFilePicker<
       }
     );
 
-  const openFilePicker = () => {
+  const openFilePicker = (args?: {multiple?: boolean, directory?: boolean}) => {
     const fileExtensions = accept instanceof Array ? accept.join(',') : accept;
     openFileDialog(
       fileExtensions,
-      multiple,
-      directory,
+      args?.multiple !== undefined ? args.multiple : multiple,
+      args?.directory !== undefined ? args.directory : directory,
       async evt => {
         clear();
         const inputElement = evt.target as HTMLInputElement;

@@ -171,9 +171,9 @@ function useFilePicker(props) {
       };
     }());
   };
-  var openFilePicker = function openFilePicker() {
+  var openFilePicker = function openFilePicker(args) {
     var fileExtensions = accept instanceof Array ? accept.join(',') : accept;
-    openFileDialog(fileExtensions, multiple, directory, /*#__PURE__*/function () {
+    openFileDialog(fileExtensions, (args == null ? void 0 : args.multiple) !== undefined ? args.multiple : multiple, (args == null ? void 0 : args.directory) !== undefined ? args.directory : directory, /*#__PURE__*/function () {
       var _ref4 = _rollupPluginBabelHelpers._asyncToGenerator( /*#__PURE__*/_rollupPluginBabelHelpers._regeneratorRuntime().mark(function _callee3(evt) {
         var inputElement, plainFileObjects, validationsBeforeParsing, files, validationsAfterParsing, filesContent;
         return _rollupPluginBabelHelpers._regeneratorRuntime().wrap(function _callee3$(_context3) {

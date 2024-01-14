@@ -92,7 +92,10 @@ export interface FileContent<ContentType> extends Blob {
     content: ContentType;
 }
 export type FilePickerReturnTypes<ContentType, CustomErrors = unknown> = {
-    openFilePicker: () => void;
+    openFilePicker: (args?: {
+        multiple?: boolean;
+        directory?: boolean;
+    }) => void;
     filesContent: FileContent<ContentType>[];
     errors: UseFilePickerError<CustomErrors>[];
     loading: boolean;
